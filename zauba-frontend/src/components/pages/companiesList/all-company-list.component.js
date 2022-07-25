@@ -22,8 +22,7 @@ import { useNavigate } from "react-router-dom";
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import Stack from '@mui/material/Stack';
-import TablePagination from '@mui/material/TablePagination';
-import { useParams } from 'react-router-dom';
+
 
 var columns = [
     { title: "CIN", field: "company_id" },
@@ -51,20 +50,9 @@ const tableIcons = {
 
 export default function AllCompanyListComponent() {
     let navigate = useNavigate();
-    // const { company_name, size, current_page  } = useParams();
 
     const [allCompanies, setAllCompanies] = React.useState([]);
-    // const [page, setPage] = React.useState(0);
-    // const [rowsPerPage, setRowsPerPage] = React.useState(5);
-    // const [totalItems, setTotalItems] = React.useState(0);
-    // const handleChangePage = (event, newPage) => {
-    //   setPage(newPage);
-    // };
-  
-    // const handleChangeRowsPerPage = event => {
-    //   setRowsPerPage(parseInt(event.target.value, 10));
-    //   setPage(0);
-    // };
+   
     
     const setUpCompanyList = async () => {
         let res;
@@ -72,7 +60,6 @@ export default function AllCompanyListComponent() {
             res = await getCompanies();
             if (res.data.error === false) {
                 setAllCompanies(res.data.data);
-                //setTotalItems(res.data.totalItems);
             } else {
                 setAllCompanies([]);
             }
@@ -86,22 +73,7 @@ export default function AllCompanyListComponent() {
         setUpCompanyList();
     }, []);
 
-    // const handleChangePage = async (page) => {
-    // }
-
-    // const hangleRowsChange = async (rows) => {
-    //     navigate('./all-companies', {'company_name':searchTitle, 'size': rows, 'page': 0});
-    // }
-
-    // const handleChangePage = (
-    //     event,
-    //     newPage,
-    //   ) => {
-    //     setPage(newPage);
-
-    //   };
-    
-    
+  
 
     const defaultMaterialTheme = createTheme();
 

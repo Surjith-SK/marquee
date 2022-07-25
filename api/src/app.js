@@ -10,7 +10,6 @@
 
  const app = express();
  
- // ==> Rotas da API:
  const index = require('./routes/index');
  const companyRoute = require('./routes/company.routes');
  
