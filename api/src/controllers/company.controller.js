@@ -83,14 +83,11 @@ const getPagingData = (data, page, limit) => {
 //TODO Frontend - backend works perfectly
 exports.listPaginationCompany = async (req, res) => {
     const { page, size, company_name } = req.query;
-    console.log('req',req.query)
     var condition = company_name ? { company_name: { [Op.like]: `%${company_name.toUpperCase()}%` } } : null;
-    console.log(condition);
     const { limit, offset } = getPagination(page, size);
     Company.findAndCountAll({ where: condition, limit, offset })
         .then(data => {
             const response = getPagingData(data, page, limit);
-            console.log(response);
             res.send(response);
         })
         .catch(err => {

@@ -42,7 +42,6 @@ export default function HomeComponent() {
 
     const onInputChange = async (event, value, reason) => {
         if (value) {
-            console.log(reason)
             getData(value);
         } else {
             setOptions([]);
@@ -60,7 +59,6 @@ export default function HomeComponent() {
                     if (!res.data.error) {
                         !res.data.data.isNewRecord ? alert.error(`${res.data.data.company_name} is already present!`) :  navigate('../all-companies', {'company_name':'', 'size': 5, 'page': 0, replace: true});
                     } else {
-                        console.log('onadd')
                         setChangeRoute(res.data.isNewRecord);
                     }
                 }
